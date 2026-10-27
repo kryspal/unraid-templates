@@ -1,6 +1,6 @@
 <CommunityApplications>
   <Profile>
-    Templates for Kryspal Media, a self-hosted media server for movies and TV shows that works with Emby and Jellyfin players such as Infuse, SenPlayer and VidHub. Kryspal Media needs its own PostgreSQL database, so there are two templates: **Kryspal Media Database** (install it first) and **Kryspal Media** (the server). The database is published on the Docker bridge gateway for the server only; the README explains the install order. Support: https://github.com/kryspal/kryspal-media/discussions
+    Templates for Kryspal Media, a self-hosted media server for movies and TV shows that works with third-party Emby and Jellyfin players such as Infuse, SenPlayer and VidHub. Kryspal Media needs its own PostgreSQL database, so there are two templates: **Kryspal Media Database** (install it first) and **Kryspal Media** (the server). The database is published on the Docker bridge gateway for the server only; the README explains the install order. Support: https://github.com/kryspal/kryspal-media/discussions
   </Profile>
   <Icon>https://raw.githubusercontent.com/kryspal/unraid-templates/main/icon.png</Icon>
   <WebPage>https://media.kryspal.net</WebPage>

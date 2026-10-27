@@ -1,6 +1,6 @@
 # Kryspal Media templates for Unraid
 
-Docker templates for [Kryspal Media](https://media.kryspal.net), a self-hosted media server for movies and TV shows. It plays files in original quality and works with Emby and Jellyfin players such as Infuse, SenPlayer and VidHub. The server needs its own PostgreSQL database, so there are two templates.
+Docker templates for [Kryspal Media](https://media.kryspal.net), a self-hosted media server for movies and TV shows. It plays files in original quality and works with third-party Emby and Jellyfin players such as Infuse, SenPlayer and VidHub. The server needs its own PostgreSQL database, so there are two templates.
 
 | Template | What it is |
 | --- | --- |
