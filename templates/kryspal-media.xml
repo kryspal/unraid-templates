@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>kryspal-media</Name>
+  <Repository>kryspal/kryspalmedia:latest</Repository>
+  <Registry>https://hub.docker.com/r/kryspal/kryspalmedia</Registry>
+  <Network>bridge</Network>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Icon>https://raw.githubusercontent.com/kryspal/unraid-templates/main/icon.png</Icon>
+  <WebUI>http://[IP]:[PORT:5797]</WebUI>
+  <Overview>Kryspal Media is a self-hosted media server for your movies and TV shows that stays fast on very large libraries. It plays your files in original quality (4K, HDR and lossless audio are never transcoded), works with Emby and Jellyfin players such as Infuse, SenPlayer and VidHub, and has a built-in web player, separate watch history for every member and open-source plugins for metadata and subtitles. No account is needed; the FREE plan is a complete media server. INSTALL ORDER: first install the Kryspal Media Database template (kryspal-media-postgres), then this server. Updating either container needs no extra steps. After the first start, open the Web UI and create the administrator in the setup wizard. This is a beta release: back up the database before upgrading.</Overview>
+  <Support>https://github.com/kryspal/kryspal-media/discussions</Support>
+  <Project>https://media.kryspal.net</Project>
+  <TemplateURL>https://raw.githubusercontent.com/kryspal/unraid-templates/main/templates/kryspal-media.xml</TemplateURL>
+  <ReadMe>https://raw.githubusercontent.com/kryspal/unraid-templates/main/README.md</ReadMe>
+  <Category>MediaServer:Video</Category>
+  <ExtraSearchTerms>kryspal media server movies tv emby jellyfin infuse senplayer vidhub</ExtraSearchTerms>
+  <Requires>Install the Kryspal Media Database template (kryspal-media-postgres) first and use the same Password folder as below. The server reaches the database at DB_HOST:DB_PORT (host.docker.internal:5799, which is the Docker bridge gateway where the database publishes its port). Needs a server version with DB_HOST and DB_PORT support (0.9.11 or newer, see the README).</Requires>
+  <Beta>true</Beta>
+  <MinVer>6.12.0</MinVer>
+  <License>Proprietary. Free plan available; PRO and MAX are paid.</License>
+  <ExtraParams>--user=99:100 --stop-timeout=60 --add-host=host.docker.internal:host-gateway</ExtraParams>
+  <Screenshot>https://raw.githubusercontent.com/kryspal/unraid-templates/main/screenshots/screenshot-1.png</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/kryspal/unraid-templates/main/screenshots/screenshot-2.png</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/kryspal/unraid-templates/main/screenshots/screenshot-3.png</Screenshot>
+  <Config Name="Web UI port" Target="5797" Default="5797" Mode="tcp" Description="Web interface and the port players connect to (add the server as http://SERVER-IP:5797)." Type="Port" Display="always" Required="true" Mask="false">5797</Config>
+  <Config Name="Internet access port" Target="5798" Default="5798" Mode="tcp" Description="Second web port for access from the internet. If you want remote access, forward only this port on your router." Type="Port" Display="advanced" Required="false" Mask="false">5798</Config>
+  <Config Name="Media folder" Target="/media" Default="/mnt/user/media" Mode="rw" Description="Your movies and TV shows. The server needs write access to save subtitles and NFO files next to the videos." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/media</Config>
+  <Config Name="Data folder" Target="/var/lib/mediaserver" Default="/mnt/user/appdata/kryspal-media/data" Mode="rw" Description="Server data: settings, images and cache." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/kryspal-media/data</Config>
+  <Config Name="Password folder" Target="/var/lib/kryspal-db" Default="/mnt/user/appdata/kryspal-media/db" Mode="ro" Description="The folder where the database container writes its generated password. Must be the SAME folder as in the Kryspal Media Database template." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/kryspal-media/db</Config>
+  <Config Name="MEDIA_ROOT" Target="MEDIA_ROOT" Default="/media" Mode="" Description="The media folders inside the container, separated by a colon. To add folders, add a Path to this template at its own container path (for example /movies, not inside /media) and list it here, for example /media:/movies." Type="Variable" Display="advanced" Required="true" Mask="false">/media</Config>
+  <Config Name="EXTERNAL_HTTP_ADDR" Target="EXTERNAL_HTTP_ADDR" Default=":5798" Mode="" Description="Listen address of the internet access port. Keep it in line with the container port above." Type="Variable" Display="advanced" Required="false" Mask="false">:5798</Config>
+  <Config Name="DB_HOST" Target="DB_HOST" Default="host.docker.internal" Mode="" Description="Where the database container is published. host.docker.internal resolves to the Docker bridge gateway of this server (through the extra parameter --add-host). Change it only if you publish the database somewhere else." Type="Variable" Display="advanced" Required="true" Mask="false">host.docker.internal</Config>
+  <Config Name="DB_PORT" Target="DB_PORT" Default="5799" Mode="" Description="The published database port (see the database template)." Type="Variable" Display="advanced" Required="true" Mask="false">5799</Config>
+  <Config Name="TZ" Target="TZ" Default="" Mode="" Description="Time zone, for example Europe/Berlin. Optional." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+</Container>

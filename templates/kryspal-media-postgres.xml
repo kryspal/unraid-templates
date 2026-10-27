@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>kryspal-media-postgres</Name>
+  <Repository>kryspal/kryspalmedia-postgres:16</Repository>
+  <Registry>https://hub.docker.com/r/kryspal/kryspalmedia-postgres</Registry>
+  <Network>bridge</Network>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Icon>https://raw.githubusercontent.com/kryspal/unraid-templates/main/icon.png</Icon>
+  <Overview>The PostgreSQL 16 database for Kryspal Media (with the pg_bigm extension). Install this container first, then install the Kryspal Media server template. The database is published only on the Docker bridge gateway (172.17.0.1 by default, port 5799), so the server container can reach it and your local network cannot. On its first start the container generates a random password and stores it in the Password folder, which the server reads, so there is no password to type or copy. Back up the Data folder and the Password folder together. For best results keep the database files on a cache pool (SSD). Updating this container needs no extra steps.</Overview>
+  <Support>https://github.com/kryspal/kryspal-media/discussions</Support>
+  <Project>https://github.com/kryspal/kryspal-media</Project>
+  <TemplateURL>https://raw.githubusercontent.com/kryspal/unraid-templates/main/templates/kryspal-media-postgres.xml</TemplateURL>
+  <ReadMe>https://raw.githubusercontent.com/kryspal/unraid-templates/main/README.md</ReadMe>
+  <Category>Tools:Utilities</Category>
+  <ExtraSearchTerms>kryspal media database postgres postgresql emby jellyfin</ExtraSearchTerms>
+  <Requires>Install this database first and use the same Password folder in the Kryspal Media server template. It is published on 172.17.0.1:5799 (extra parameter -p), the usual address of the default Docker bridge. If the container fails to start with "cannot assign requested address", your bridge uses another address: run "docker network inspect bridge" in the terminal and put the Gateway address in place of 172.17.0.1 in the extra parameters. The server template does not need a change.</Requires>
+  <Beta>true</Beta>
+  <MinVer>6.12.0</MinVer>
+  <License>PostgreSQL License</License>
+  <ExtraParams>--stop-timeout=60 -p 172.17.0.1:5799:5432</ExtraParams>
+  <Config Name="Data folder" Target="/var/lib/postgresql/data" Default="/mnt/user/appdata/kryspal-media-postgres" Mode="rw" Description="The database files. PostgreSQL works best on an SSD: keep this on a cache pool, for example by setting the appdata share to Cache: Only (or Prefer), and use the same path form (/mnt/user or /mnt/cache) every time." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/kryspal-media-postgres</Config>
+  <Config Name="Password folder" Target="/var/lib/kryspal-db" Default="/mnt/user/appdata/kryspal-media/db" Mode="rw" Description="Holds the generated database password. Use the SAME folder in the Kryspal Media server template." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/kryspal-media/db</Config>
+  <Config Name="TZ" Target="TZ" Default="" Mode="" Description="Time zone, for example Europe/Berlin. Optional." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+</Container>
