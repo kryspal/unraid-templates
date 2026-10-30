@@ -15,7 +15,7 @@
   <Category>Tools:Utilities</Category>
   <ExtraSearchTerms>kryspal media database postgres postgresql emby jellyfin</ExtraSearchTerms>
   <Requires>Install this database first and use the same Password folder in the Kryspal Media server template. It is published on 172.17.0.1:5799 (extra parameter -p), the usual address of the default Docker bridge. If the container fails to start with "cannot assign requested address", your bridge uses another address: run "docker network inspect bridge" in the terminal and put the Gateway address in place of 172.17.0.1 in the extra parameters. The server template does not need a change.</Requires>
-  <Beta>true</Beta>
+  <Beta>false</Beta>
   <MinVer>6.12.0</MinVer>
   <License>PostgreSQL License</License>
   <ExtraParams>--stop-timeout=60 -p 172.17.0.1:5799:5432</ExtraParams>

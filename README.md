@@ -38,8 +38,8 @@ Add a Path to the Kryspal Media container for each extra folder, at its own cont
 
 - Port 5798 is for access from the internet: forward only this port on your router. Automatic discovery on the local network is not enabled; add the server by address.
 - The server runs as `nobody:users` (99:100) so files it writes next to your videos match your shares.
-- The containers use the `latest` tag, so Unraid shows update notices. To pin a version, change the tag to a specific version number, for example `kryspal/kryspalmedia:0.9.10-beta`.
-- This is a beta release. Back up the database before upgrading (see the [documentation](https://media.kryspal.net/docs/)).
+- The containers use the `latest` tag, so Unraid shows update notices. To pin a version, change the tag to a specific version number, for example `kryspal/kryspalmedia:0.9.13`.
+- Back up the database before upgrading (see the [documentation](https://media.kryspal.net/docs/)).
 - Support: [GitHub Discussions](https://github.com/kryspal/kryspal-media/discussions).
 
 ## License
