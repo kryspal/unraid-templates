@@ -16,6 +16,12 @@
   <Category>MediaServer:Video</Category>
   <ExtraSearchTerms>kryspal media server movies tv emby jellyfin infuse senplayer vidhub</ExtraSearchTerms>
   <Requires>Install the Kryspal Media Database template (kryspal-media-postgres) first and use the same Password folder as below. The server reaches the database at DB_HOST:DB_PORT (host.docker.internal:5799, which is the Docker bridge gateway where the database publishes its port). Needs a server version with DB_HOST and DB_PORT support (0.9.11 or newer, see the README).</Requires>
+  <Changes><![CDATA[
+### 0.9.18 (2026-11-23)
+- Remote access with Tailscale: a free official plugin puts the server on your tailnet with an https address, and family members can sign in without a password using their Tailscale account
+- Works behind reverse proxies: Kryspal apps sign in through Nginx and similar proxies, and the admin console tells you when the proxy hides the address
+- Security and reliability: Go 1.27.4 fixes an HTTP flaw that could crash the server, cloud-drive playback reconnects with the cached direct link, and finished scans show what changed
+]]></Changes>
   <Beta>false</Beta>
   <MinVer>6.12.0</MinVer>
   <License>Proprietary. Free plan available; PRO and MAX are paid.</License>
